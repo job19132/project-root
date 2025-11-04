@@ -14,28 +14,6 @@ Frontend ใช้สำหรับแสดงข้อมูล Config, บ�
 
 ---
 
-## 🧩 โครงสร้างโปรเจกต์
-project-root/
-├── backend/ # Node.js + Express API Server
-│ ├── src/
-│ │ └── index.js
-│ ├── .env
-│ ├── package.json
-│ └── ...
-│
-├── frontend/ # React + Vite Frontend
-│ ├── src/
-│ │ ├── App.jsx
-│ │ └── ...
-│ ├── .env
-│ ├── vite.config.js
-│ └── package.json
-│
-├── .gitignore
-└── README.md
-
----
-
 ## ⚙️ Environment Variables
 
 ### Backend (`.env`)
