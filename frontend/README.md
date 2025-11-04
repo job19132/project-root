@@ -1,85 +1,117 @@
-# Drone Monitoring Project (Assignment #1 + #2)
+# 🚀 Drone App Project  
+**โดย:** ลาภวัต อินต๊ะแสน (66010719)
 
-โปรเจกต์นี้ประกอบด้วย **Backend API Server** (Node.js + Express.js)  
-และ **Frontend Web App** (React + Vite)  
-สำหรับจัดการและแสดงข้อมูลของ Drone เช่น Config, Status, และ Temperature Logs
+## 📘 รายละเอียดโปรเจกต์
+โปรเจกต์นี้ประกอบด้วย 2 ส่วนหลัก คือ  
+1. **Backend (API Server)** — พัฒนาโดยใช้ **Node.js + Express.js**  
+2. **Frontend (Web UI)** — พัฒนาโดยใช้ **React + Vite**
+
+ระบบนี้ออกแบบเพื่อจำลองการทำงานของ **Drone Management System** โดย Backend จะเชื่อมต่อกับ 2 servers ภายนอกคือ  
+- **Drone Config Server** (สำหรับอ่านข้อมูล Config ของ Drone)  
+- **Drone Log Server** (สำหรับบันทึกและอ่านประวัติ Log อุณหภูมิ)
+
+Frontend ใช้สำหรับแสดงข้อมูล Config, บันทึกค่าอุณหภูมิใหม่ และดูประวัติการทำงานของ Drone
 
 ---
 
-## 🧩 Features
-
-| Assignment | Feature | Description |
-|-------------|----------|-------------|
-| 🧱 #1 Backend | `/configs/:droneId` | ดึงข้อมูล Config ของ Drone จาก Google Apps Script |
-|  | `/status/:droneId` | ดึงข้อมูลสถานะ (condition) ของ Drone |
-|  | `/logs/:droneId` | ดึง Logs ล่าสุดของ Drone จาก PocketBase (จำกัด 12 รายการ) |
-|  | `/logs` (POST) | เพิ่ม Temperature Log ใหม่เข้า PocketBase |
-| 🌐 #2 Frontend | View Config | แสดงข้อมูล Drone ID / Name / Country / Light |
-|  | Temperature Form | ป้อนอุณหภูมิ (celsius) แล้วส่งไปยัง API Server |
-|  | View Logs | แสดง Log ล่าสุดของ Drone ในรูปแบบตาราง |
+## 🧩 โครงสร้างโปรเจกต์
+project-root/
+├── backend/ # Node.js + Express API Server
+│ ├── src/
+│ │ └── index.js
+│ ├── .env
+│ ├── package.json
+│ └── ...
+│
+├── frontend/ # React + Vite Frontend
+│ ├── src/
+│ │ ├── App.jsx
+│ │ └── ...
+│ ├── .env
+│ ├── vite.config.js
+│ └── package.json
+│
+├── .gitignore
+└── README.md
 
 ---
 
 ## ⚙️ Environment Variables
 
-### 📁 `backend/.env`
-env
+### Backend (`.env`)
+```bash
 PORT=3000
 DRONE_CONFIG_URL=https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec
-
 LOG_URL=https://app-tracking.pockethost.io/api/collections/drone_logs/records
 LOG_API_TOKEN=20250901efx
+Frontend (.env)
 
-### 📁 `frontend/.env`
-env
-VITE_DRONE_ID=3001
-VITE_API_BASE=/api
-
-🛠️ Installation & Run
-Run Backend (API Server)
-
+VITE_DRONE_ID=66010719
+VITE_API_BASE=https://rone-backend.onrender.com/api
+🖥️ วิธีการรันบนเครื่อง (Local)
+🔹 1. Backend
 cd backend
-
 npm install
-
 npm run dev
+เปิดที่: http://localhost:3000
 
-Server จะเริ่มที่ http://localhost:3000
-
-ทดสอบได้โดยเรียก:
-
-http://localhost:3000/configs/3001
-
-http://localhost:3000/logs/3001
-
-POST /logs → เพิ่มข้อมูล log ใหม่
-
-Run Frontend (React + Vite)
-
+🔹 2. Frontend
+bash
+คัดลอกโค้ด
 cd frontend
 npm install
 npm run dev
-เปิด http://localhost:5173
+เปิดที่: http://localhost:5173
 
-proxy /api จะชี้ไปยัง backend ที่พอร์ต 3000 โดยอัตโนมัติ
+🌐 การ Deploy
+🔸 Backend (Render)
+Host: https://rone-backend.onrender.com
 
-Proxy Configuration (frontend/vite.config.js)
-js
+Type: Node.js Web Service
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+Environment Variables: กรอกค่าจากไฟล์ .env
 
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5173,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
-  },
-})
+🔸 Frontend (Vercel)
+Host: (URL จาก Vercel ของคุณ)
+
+Framework: React (Vite)
+
+Environment Variables: VITE_DRONE_ID, VITE_API_BASE (URL ของ Backend)
+
+🧭 API ที่มีในระบบ
+Method	Path	คำอธิบาย
+GET	/configs/:droneId	ดึงข้อมูล Config ของ Drone
+GET	/status/:droneId	ดึงสถานะ (condition) ของ Drone
+GET	/logs/:droneId	ดึง Log ล่าสุดของ Drone (สูงสุด 12 รายการ)
+POST	/logs	เพิ่มข้อมูลอุณหภูมิใหม่ใน Log
+
+🧠 ตัวอย่างผลลัพธ์ API
+GET /configs/3001
+
+{
+  "drone_id": 3001,
+  "drone_name": "Dot Dot So",
+  "light": "off",
+  "country": "Bharat",
+  "weight": 25
+}
+GET /logs/3001
+
+[
+  {
+    "drone_id": 3001,
+    "drone_name": "Dot Dot So",
+    "country": "India",
+    "celsius": 45,
+    "created": "2024-09-22T07:37:32.111Z"
+  }
+]
+🧑‍💻 ผู้พัฒนา
+ชื่อ: ลาภวัต อินต๊ะแสน
+รหัสนักศึกษา: 66010719
+สาขา: วิศวกรรมคอมพิวเตอร์
+มหาวิทยาลัย: คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+
+💡 License
+This project is created for educational purposes.
+© 2025 Lapphawat Intasan.
