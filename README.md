@@ -17,7 +17,7 @@ Frontend ใช้สำหรับแสดงข้อมูล Config, บ�
 ## Environment Variables
 
 ### Backend (`.env`)
-```bash
+
 PORT=3000
 DRONE_CONFIG_URL=https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec
 LOG_URL=https://app-tracking.pockethost.io/api/collections/drone_logs/records
@@ -41,7 +41,7 @@ npm install
 npm run dev
 เปิดที่: http://localhost:5173
 
-การ Deploy
+## การ Deploy
 Backend (Render)
 Host: https://rone-backend.onrender.com
 
@@ -56,14 +56,14 @@ Framework: React (Vite)
 
 Environment Variables: VITE_DRONE_ID, VITE_API_BASE (URL ของ Backend)
 
-API ที่มีในระบบ
+## API ที่มีในระบบ
 Method	Path	คำอธิบาย
 GET	/configs/:droneId	ดึงข้อมูล Config ของ Drone
 GET	/status/:droneId	ดึงสถานะ (condition) ของ Drone
 GET	/logs/:droneId	ดึง Log ล่าสุดของ Drone (สูงสุด 12 รายการ)
 POST	/logs	เพิ่มข้อมูลอุณหภูมิใหม่ใน Log
 
-ตัวอย่างผลลัพธ์ API
+# ตัวอย่างผลลัพธ์ API
 GET /configs/3001
 
 {
@@ -84,7 +84,7 @@ GET /logs/3001
     "created": "2024-09-22T07:37:32.111Z"
   }
 ]
-ผู้พัฒนา
+## ผู้พัฒนา
 ชื่อ: ลาภวัต อินต๊ะแสน
 รหัสนักศึกษา: 66010719
 สาขา: วิศวกรรมระบบไอโอทีและสาระสนเทศ
