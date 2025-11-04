@@ -6,23 +6,6 @@
 
 ---
 
-## Project Structure
-
-project-root/
-├── backend/ # Express.js API Server
-│ ├── src/
-│ │ └── index.js
-│ ├── .env
-│ └── package.json
-├── frontend/ # React + Vite Web App
-│ ├── src/
-│ │ └── App.jsx
-│ ├── .env
-│ └── package.json
-└── README.md #
-
----
-
 ## 🧩 Features
 
 | Assignment | Feature | Description |
