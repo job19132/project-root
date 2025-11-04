@@ -26,17 +26,17 @@
 env
 PORT=3000
 DRONE_CONFIG_URL=https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec
+
 LOG_URL=https://app-tracking.pockethost.io/api/collections/drone_logs/records
 LOG_API_TOKEN=20250901efx
-frontend/.env
-env
 
+### 📁 `frontend/.env`
+env
 VITE_DRONE_ID=3001
 VITE_API_BASE=/api
+
 🛠️ Installation & Run
 Run Backend (API Server)
-bash
-
 cd backend
 npm install
 npm run dev
