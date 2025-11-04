@@ -34,8 +34,6 @@ npm run dev
 เปิดที่: http://localhost:3000
 
 🔹 2. Frontend
-bash
-คัดลอกโค้ด
 cd frontend
 npm install
 npm run dev
