@@ -37,9 +37,13 @@ VITE_API_BASE=/api
 
 🛠️ Installation & Run
 Run Backend (API Server)
+
 cd backend
+
 npm install
+
 npm run dev
+
 Server จะเริ่มที่ http://localhost:3000
 
 ทดสอบได้โดยเรียก:
