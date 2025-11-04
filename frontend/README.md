@@ -19,10 +19,7 @@ project-root/
 │ │ └── App.jsx
 │ ├── .env
 │ └── package.json
-└── README.md # (ไฟล์นี้)
-
-yaml
-คัดลอกโค้ด
+└── README.md #
 
 ---
 
@@ -43,7 +40,7 @@ yaml
 ## ⚙️ Environment Variables
 
 ### 📁 `backend/.env`
-```env
+env
 PORT=3000
 DRONE_CONFIG_URL=https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec
 LOG_URL=https://app-tracking.pockethost.io/api/collections/drone_logs/records
@@ -71,7 +68,6 @@ http://localhost:3000/logs/3001
 POST /logs → เพิ่มข้อมูล log ใหม่
 
 Run Frontend (React + Vite)
-bash
 
 cd frontend
 npm install
@@ -82,7 +78,7 @@ proxy /api จะชี้ไปยัง backend ที่พอร์ต 3000 
 
 Proxy Configuration (frontend/vite.config.js)
 js
-คัดลอกโค้ด
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
